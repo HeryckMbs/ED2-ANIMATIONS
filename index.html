@@ -26,9 +26,9 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background-color: red;
+            background-color: white;
             position: absolute;
-            transition: 0.2s all ease;
+            transition: 1s all ease;
         }
     </style>
 </head>
@@ -114,7 +114,6 @@
 
         }
 
-        // Bubble sort Implementation using Javascript
 
 
         function getData() {
@@ -144,6 +143,7 @@
                         resolve()
                     }, 1000)
                 })
+
             })
         }
 
@@ -159,35 +159,31 @@
                 document.querySelector('.a'+a).style.transform = `translate(${a * 140}px)`
             }
 
-            let balls = $('.ball')
+            var balls = $('.ball')
             printArray(arraya, false)
                  
-            for (var i = 0; i < arraya.length - 1; i++) {
-                for (var j = 0; j < (arraya.length - i - 1); j++) {
-                    var aux = j+1;
-                    $('.a'+aux).css({"background-color":"yellow"});
-                    $('.a'+j).css({"background-color":"yellow"});
-
+            for (var i = 0; i <= arraya.length - 1; i++) {
+                for (var j = 0; j <= (arraya.length - i - 1); j++) {
+                        console.log(i, i+1)
+                    $('.a'+i).css({"background-color":"#FF4949"});
+                    $('.a'+(j+1)).css({"background-color":"#FF4949"});
                     await new Promise((resolve) => {
-                        setTimeout(()=>{
-                            resolve()
-                        },1050)
+                        setTimeout(()=>{resolve()},1000)
                     })
     
                     if (arraya[j] > arraya[j + 1]) {
-              
                     await swap(balls[j],balls[j+1])
                     balls = document.querySelectorAll('.ball')
                         var temp = arraya[j]
                         arraya[j] = arraya[j + 1]
                         arraya[j + 1] = temp
-                      
                     }
-
-                    $('.a'+aux).css({"background-color":"red"});
-                    $('.a'+j).css({"background-color":"red"});
+                     $('.a'+j).css({"background-color":"white"});
+                    $('.a'+(j+1)).css({"background-color":"white"});
+                   
                 }
-                balls[balls.length - i -1].style.backgroundColor = "#13CE66"
+            
+                // balls[balls.length - i -1].style.backgroundColor = "#13CE66"
             }
             $('.ball').css({"background-color": "#13CE66"})
             printArray(arraya, true)
